@@ -1,0 +1,17 @@
+[
+  {
+    "id": 0,
+    "name": "undetermined",
+    "value": "未確定"
+  },
+  {
+    "id": 1,
+    "name": "determined",
+    "value": "確定"
+  },
+  {
+    "id": 2,
+    "name": "exclued",
+    "value": "除外"
+  }
+]
