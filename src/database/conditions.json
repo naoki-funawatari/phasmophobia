@@ -1,17 +1,17 @@
 [
   {
     "id": 0,
-    "name": "undetermined",
-    "value": "未確定"
+    "value": "undetermined",
+    "name": "未確定"
   },
   {
     "id": 1,
-    "name": "determined",
-    "value": "確定"
+    "value": "determined",
+    "name": "確定"
   },
   {
     "id": 2,
-    "name": "exclued",
-    "value": "除外"
+    "value": "exclued",
+    "name": "除外"
   }
 ]
