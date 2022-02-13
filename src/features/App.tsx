@@ -72,7 +72,7 @@ export default function App() {
                         type="radio"
                         name={`evidence-table-data-${item.id}`}
                         checked={isDetermin(item.id, condition.id)}
-                        onClick={handleEvidenceClicked(item.id, condition.id)}
+                        onChange={handleEvidenceClicked(item.id, condition.id)}
                       />
                     </label>
                   </td>
