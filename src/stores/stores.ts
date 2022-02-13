@@ -16,7 +16,7 @@ interface Condition {
 interface Ghost {
   id: number;
   name: string;
-  items: number[];
+  itemIds: number[];
 }
 
 export interface ItemCondition {
