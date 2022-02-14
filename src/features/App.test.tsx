@@ -1,13 +1,8 @@
-import { RecoilRoot } from "recoil";
-import { render } from "@testing-library/react";
+import { shallow } from "enzyme";
 import App from "@/features/App";
 
 describe("Mount App.", () => {
   test("Mount App.", () => {
-    render(
-      <RecoilRoot>
-        <App />
-      </RecoilRoot>
-    );
+    shallow(<App />);
   });
 });

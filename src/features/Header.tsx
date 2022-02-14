@@ -1,10 +1,9 @@
-import { useRecoilValue, useRecoilState } from "recoil";
-import { itemsStore, conditionsStore, itemConditionsStore, ItemCondition } from "@/stores/stores";
+import { useItems, useConditions, useConditionPerItem } from "@/features/hooks/hooks";
 
 export default function Header() {
-  const items = useRecoilValue(itemsStore);
-  const conditions = useRecoilValue(conditionsStore);
-  const [conditionPerItem, setConditionPerItem] = useRecoilState(itemConditionsStore);
+  const items = useItems();
+  const conditions = useConditions();
+  const { conditionPerItem, setConditionPerItem } = useConditionPerItem();
 
   const isDetermin = (itemId: number, conditionId: number) => {
     return !!conditionPerItem
@@ -15,7 +14,7 @@ export default function Header() {
   const handleEvidenceClicked = (itemId: number, conditionId: number) => () => {
     const newItem = items.find(o => o.id === itemId);
     const newCondition = conditions.find(o => o.id === conditionId);
-    const newconditionPerItem = conditionPerItem.map<ItemCondition>(o =>
+    const newconditionPerItem = conditionPerItem.map(o =>
       newItem && newCondition && o.item.id === itemId
         ? { item: newItem, condition: newCondition }
         : o

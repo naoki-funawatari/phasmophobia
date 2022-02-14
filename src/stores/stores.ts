@@ -3,17 +3,18 @@ import itemsjson from "@/database/items.json";
 import conditionsjson from "@/database/conditions.json";
 import ghostsjson from "@/database/ghosts.json";
 
-interface Item {
+export interface Item {
   id: number;
   name: string;
 }
 
-interface Condition {
+export interface Condition {
   id: number;
+  value: string;
   name: string;
 }
 
-interface Ghost {
+export interface Ghost {
   id: number;
   name: string;
   itemIds: number[];
