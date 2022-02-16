@@ -1,10 +1,9 @@
-import { useRecoilValue } from "recoil";
-import { itemsStore, ghostsStore, itemConditionsStore } from "@/stores/stores";
+import { useItems, useGhosts, useConditionPerItem } from "@/features/hooks/hooks";
 
 export default function Main() {
-  const items = useRecoilValue(itemsStore);
-  const ghosts = useRecoilValue(ghostsStore);
-  const conditionPerItem = useRecoilValue(itemConditionsStore);
+  const items = useItems();
+  const ghosts = useGhosts();
+  const { conditionPerItem } = useConditionPerItem();
 
   const getConditionName = (ghostId: number, itemId: number) => {
     const hasItem = ghosts

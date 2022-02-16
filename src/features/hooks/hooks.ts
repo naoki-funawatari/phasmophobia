@@ -1,9 +1,11 @@
 import { useRecoilValue, useRecoilState } from "recoil";
-import { itemsStore, conditionsStore, itemConditionsStore } from "@/stores/stores";
+import { itemsStore, conditionsStore, ghostsStore, itemConditionsStore } from "@/stores/stores";
 
 export const useItems = () => useRecoilValue(itemsStore);
 
 export const useConditions = () => useRecoilValue(conditionsStore);
+
+export const useGhosts = () => useRecoilValue(ghostsStore);
 
 export const useConditionPerItem = () => {
   const [conditionPerItem, setConditionPerItem] = useRecoilState(itemConditionsStore);
