@@ -1,6 +1,6 @@
 import { useItems, useConditions, useConditionPerItem } from "@/features/hooks/hooks";
 
-export default function Header() {
+export default function Selection() {
   const items = useItems();
   const conditions = useConditions();
   const { conditionPerItem, setConditionPerItem } = useConditionPerItem();

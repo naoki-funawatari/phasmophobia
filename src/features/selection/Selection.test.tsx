@@ -1,5 +1,5 @@
 import { shallow } from "enzyme";
-import Header from "@/features/Header";
+import Selection from "@/features/selection/Selection";
 import { Item, Condition, ItemCondition } from "@/stores/stores";
 import { useItems, useConditions, useConditionPerItem } from "@/features/hooks/hooks";
 
@@ -10,7 +10,7 @@ const mockUseItems = useItems as jest.Mock;
 const mockUseConditions = useConditions as jest.Mock;
 const mockUseConditionPerItem = useConditionPerItem as jest.Mock;
 
-describe("Mount Header.", () => {
+describe("Mount Selection.", () => {
   beforeEach(() => {
     mockUseItems.mockImplementation(() => mockItems);
     mockUseConditions.mockImplementation(() => mockConditions);
@@ -20,8 +20,8 @@ describe("Mount Header.", () => {
     }));
   });
 
-  test("Mount Header.", () => {
-    const render = shallow(<Header />);
+  test("Mount Selection.", () => {
+    const render = shallow(<Selection />);
     const element = render.find("input[type='radio']"); //.simulate("click");
     element.first().simulate("click");
   });

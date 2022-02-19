@@ -1,10 +1,10 @@
-import Header from "@/features/Header";
+import Selection from "@/features/selection/Selection";
 import Main from "@/features/Main";
 
 export default function App() {
   return (
     <>
-      <Header />
+      <Selection />
       <hr />
       <Main />
     </>
