@@ -3,16 +3,8 @@ import Header from "@/features/Header";
 import { Item, Condition, ItemCondition } from "@/stores/stores";
 import { useItems, useConditions, useConditionPerItem } from "@/features/hooks/hooks";
 
-jest.mock("recoil", () => ({
-  useRecoilValue: jest.fn(),
-  useRecoilState: jest.fn(),
-}));
-
-jest.mock("@/features/hooks/hooks", () => ({
-  useItems: jest.fn(),
-  useConditions: jest.fn(),
-  useConditionPerItem: jest.fn(),
-}));
+jest.mock("recoil");
+jest.mock("@/features/hooks/hooks");
 
 const mockUseItems = useItems as jest.Mock;
 const mockUseConditions = useConditions as jest.Mock;
