@@ -1,27 +1,9 @@
-import { useItems, useConditions, useConditionPerItem } from "@/features/hooks/hooks";
+import { useItems, useConditions } from "@/features/hooks/hooks";
+import Radio from "@/features/selection/Radio";
 
 export default function Selection() {
   const items = useItems();
   const conditions = useConditions();
-  const { conditionPerItem, setConditionPerItem } = useConditionPerItem();
-
-  const isDetermin = (itemId: number, conditionId: number) => {
-    return !!conditionPerItem
-      .filter(o => o.item.id === itemId)
-      .filter(o => o.condition.id === conditionId).length;
-  };
-
-  const handleEvidenceClicked = (itemId: number, conditionId: number) => () => {
-    const newItem = items.find(o => o.id === itemId);
-    const newCondition = conditions.find(o => o.id === conditionId);
-    const newconditionPerItem = conditionPerItem.map(o =>
-      newItem && newCondition && o.item.id === itemId
-        ? { item: newItem, condition: newCondition }
-        : o
-    );
-
-    setConditionPerItem(newconditionPerItem);
-  };
 
   return (
     <header>
@@ -40,15 +22,7 @@ export default function Selection() {
               <td>{condition.name}</td>
               {items.map(item => (
                 <td key={`evidence-table-data-${condition.id}-${i}-${item.id}`}>
-                  <label>
-                    {`${isDetermin(item.id, condition.id)}`}
-                    <input
-                      type="radio"
-                      name={`evidence-table-data-${item.id}`}
-                      checked={isDetermin(item.id, condition.id)}
-                      onChange={handleEvidenceClicked(item.id, condition.id)}
-                    />
-                  </label>
+                  <Radio itemId={item.id} conditionId={condition.id} />
                 </td>
               ))}
             </tr>

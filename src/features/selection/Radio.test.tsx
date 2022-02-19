@@ -1,5 +1,5 @@
 import { shallow } from "enzyme";
-import Selection from "@/features/selection/Selection";
+import Radio from "@/features/selection/Radio";
 import { Item, Condition, ItemCondition } from "@/stores/stores";
 import { useItems, useConditions, useConditionPerItem } from "@/features/hooks/hooks";
 
@@ -10,7 +10,7 @@ const mockUseItems = useItems as jest.Mock;
 const mockUseConditions = useConditions as jest.Mock;
 const mockUseConditionPerItem = useConditionPerItem as jest.Mock;
 
-describe("Mount Selection.", () => {
+describe("Mount Radio.", () => {
   beforeEach(() => {
     mockUseItems.mockImplementation(() => mockItems);
     mockUseConditions.mockImplementation(() => mockConditions);
@@ -20,8 +20,10 @@ describe("Mount Selection.", () => {
     }));
   });
 
-  test("Mount Selection.", () => {
-    shallow(<Selection />);
+  test("Mount Radio.", () => {
+    const render = shallow(<Radio itemId={1} conditionId={1} />);
+    const element = render.find("input[type='radio']");
+    element.first().simulate("click");
   });
 });
 
