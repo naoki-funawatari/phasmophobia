@@ -1,33 +1,9 @@
-import {
-  useItems,
-  useGhosts,
-  useConditionPerItem,
-} from "@/features/common/hooks";
+import { useItems, useGhosts } from "@/features/common/hooks";
+import Detail from "@/features/details/Detail";
 
 export default function Details() {
   const items = useItems();
   const ghosts = useGhosts();
-  const { conditionPerItem } = useConditionPerItem();
-
-  const getConditionName = (ghostId: number, itemId: number) => {
-    const hasItem = ghosts
-      .filter(o => o.id === ghostId)
-      .flatMap(o => o.itemIds)
-      .includes(itemId);
-    const conditionName =
-      conditionPerItem.find(o => o.item.id === itemId)?.condition.name ?? "";
-    return hasItem ? conditionName : "-";
-  };
-
-  const getDeterminCount = (ghostId: number) => {
-    const determinItemIds = conditionPerItem
-      .filter(o => o.condition.id === 1)
-      .map(o => o.item.id);
-    return ghosts
-      .filter(o => o.id === ghostId)
-      .flatMap(o => o.itemIds)
-      .filter(o => determinItemIds.includes(o)).length;
-  };
 
   return (
     <main>
@@ -42,16 +18,11 @@ export default function Details() {
           </tr>
         </thead>
         <tbody>
-          {ghosts.map((ghost, i) => (
-            <tr key={`ghost-table-data-${ghost.id}-${i}`}>
-              <td>{ghost.name}</td>
-              {items.map(item => (
-                <td key={`ghost-table-data-${ghost.id}-${i}-${item.id}`}>
-                  <label>{`${getConditionName(ghost.id, item.id)}`}</label>
-                </td>
-              ))}
-              <td>{getDeterminCount(ghost.id)}</td>
-            </tr>
+          {ghosts.map((ghost, index) => (
+            <Detail
+              key={`ghost-table-data-${ghost.id}-${index}`}
+              {...{ id: ghost.id, name: ghost.name, index }}
+            />
           ))}
         </tbody>
       </table>

@@ -1,5 +1,11 @@
 import { useRecoilValue, useRecoilState } from "recoil";
-import { useItems, useConditions, useGhosts, useConditionPerItem } from "@/features/common/hooks";
+import {
+  useItems,
+  useConditions,
+  useGhosts,
+  useConditionPerItem,
+  useDeterminCount,
+} from "@/features/common/hooks";
 
 const mockUseRecoilValue = useRecoilValue as jest.Mock;
 const mockUseRecoilState = useRecoilState as jest.Mock;
@@ -34,5 +40,10 @@ describe("Call Function.", () => {
   test("Call useConditionPerItem.", () => {
     useConditionPerItem();
     expect(mockUseRecoilState).toBeCalledTimes(1);
+  });
+
+  test("Call useDeterminCount.", () => {
+    useDeterminCount(1);
+    expect(mockUseRecoilValue).toBeCalledTimes(1);
   });
 });

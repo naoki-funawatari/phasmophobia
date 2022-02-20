@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom, selectorFamily } from "recoil";
 import itemsjson from "@/database/items.json";
 import conditionsjson from "@/database/conditions.json";
 import ghostsjson from "@/database/ghosts.json";
@@ -46,4 +46,22 @@ export const itemConditionsStore = atom<ItemCondition[]>({
     item,
     condition: conditionsjson[0],
   })),
+});
+
+export const determinCountStore = selectorFamily<number, number>({
+  key: "determinCountStore",
+  get:
+    ghostId =>
+    ({ get }) => {
+      const conditionPerItem = get(itemConditionsStore);
+      const ghosts = get(ghostsStore);
+      const determinItemIds = conditionPerItem
+        .filter(o => o.condition.id === 1)
+        .map(o => o.item.id);
+
+      return ghosts
+        .filter(o => o.id === ghostId)
+        .flatMap(o => o.itemIds)
+        .filter(o => determinItemIds.includes(o)).length;
+    },
 });
