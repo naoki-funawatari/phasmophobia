@@ -27,7 +27,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test --coverage",
+    "test": "craco test --coverage --watchAll",
     "eject": "craco eject"
   },
   "eslintConfig": {
@@ -56,7 +56,8 @@
       "^@/(.*)$": "<rootDir>/src/$1"
     },
     "watchPathIgnorePatterns": [
-      "<rootDir>/src/index.ts"
+      "<rootDir>/src/index.ts",
+      "<rootDir>/src/reportWebVitals.js"
     ]
   }
 }
