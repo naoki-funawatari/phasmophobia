@@ -11,19 +11,29 @@ const mockUseConditions = useConditions as jest.Mock;
 const mockUseConditionPerItem = useConditionPerItem as jest.Mock;
 
 describe("Mount Radio.", () => {
+  const setConditionPerItem = jest.fn();
+
   beforeEach(() => {
     mockUseItems.mockImplementation(() => mockItems);
     mockUseConditions.mockImplementation(() => mockConditions);
     mockUseConditionPerItem.mockImplementation(() => ({
       conditionPerItem: mockItemConditions,
-      setConditionPerItem: () => {},
+      setConditionPerItem,
     }));
   });
 
   test("Mount Radio.", () => {
+    shallow(<Radio itemId={1} conditionId={1} />);
+    expect(mockUseItems).toBeCalledTimes(1);
+    expect(mockUseConditions).toBeCalledTimes(1);
+    expect(mockUseConditionPerItem).toBeCalledTimes(1);
+  });
+
+  test("Change Radio.", () => {
     const render = shallow(<Radio itemId={1} conditionId={1} />);
     const element = render.find("input[type='radio']");
-    element.first().simulate("click");
+    element.first().simulate("change");
+    expect(setConditionPerItem).toBeCalledTimes(1);
   });
 });
 

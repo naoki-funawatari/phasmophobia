@@ -11,7 +11,7 @@ export default function Radio({ itemId, conditionId }: { itemId: number; conditi
       .filter(o => o.condition.id === conditionId).length;
   };
 
-  const handleEvidenceClicked = () => () => {
+  const handleEvidenceClicked = () => {
     const newItem = items.find(o => o.id === itemId);
     const newCondition = conditions.find(o => o.id === conditionId);
     const newconditionPerItem = conditionPerItem.map(o =>
@@ -30,7 +30,7 @@ export default function Radio({ itemId, conditionId }: { itemId: number; conditi
         type="radio"
         name={`evidence-table-data-${itemId}`}
         checked={isDetermin()}
-        onChange={handleEvidenceClicked()}
+        onChange={handleEvidenceClicked}
       />
     </label>
   );
