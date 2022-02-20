@@ -50,9 +50,9 @@ export const itemConditionsStore = atom<ItemCondition[]>({
 
 export const determinCountStore = selectorFamily<number, number>({
   key: "determinCountStore",
-  get:
-    ghostId =>
-    ({ get }) => {
+  get: ghostId => {
+    // istanbul ignore next
+    return ({ get }) => {
       const conditionPerItem = get(itemConditionsStore);
       const ghosts = get(ghostsStore);
       const determinItemIds = conditionPerItem
@@ -63,5 +63,6 @@ export const determinCountStore = selectorFamily<number, number>({
         .filter(o => o.id === ghostId)
         .flatMap(o => o.itemIds)
         .filter(o => determinItemIds.includes(o)).length;
-    },
+    };
+  },
 });

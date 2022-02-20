@@ -56,9 +56,13 @@
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
     },
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/features/common/stores.ts"
+    ],
     "watchPathIgnorePatterns": [
       "<rootDir>/src/index.ts",
-      "<rootDir>/src/reportWebVitals.js"
+      "<rootDir>/src/reportWebVitals.js",
+      "<rootDir>/src/features/common/stores.ts"
     ]
   }
 }
