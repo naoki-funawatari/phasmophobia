@@ -1,5 +1,5 @@
 import { useRecoilValue, useRecoilState } from "recoil";
-import { useItems, useConditions, useGhosts, useConditionPerItem } from "@/features/hooks/hooks";
+import { useItems, useConditions, useGhosts, useConditionPerItem } from "@/features/common/hooks";
 
 const mockUseRecoilValue = useRecoilValue as jest.Mock;
 const mockUseRecoilState = useRecoilState as jest.Mock;

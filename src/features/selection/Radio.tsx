@@ -1,4 +1,4 @@
-import { useItems, useConditions, useConditionPerItem } from "@/features/hooks/hooks";
+import { useItems, useConditions, useConditionPerItem } from "@/features/common/hooks";
 
 export default function Radio({ itemId, conditionId }: { itemId: number; conditionId: number }) {
   const items = useItems();

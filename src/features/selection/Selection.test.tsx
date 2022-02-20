@@ -1,10 +1,10 @@
 import { shallow } from "enzyme";
 import Selection from "@/features/selection/Selection";
-import { Item, Condition } from "@/stores/stores";
-import { useItems, useConditions } from "@/features/hooks/hooks";
+import { Item, Condition } from "@/features/common/stores";
+import { useItems, useConditions } from "@/features/common/hooks";
 
 jest.mock("recoil");
-jest.mock("@/features/hooks/hooks");
+jest.mock("@/features/common/hooks");
 
 const mockUseItems = useItems as jest.Mock;
 const mockUseConditions = useConditions as jest.Mock;

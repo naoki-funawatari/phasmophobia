@@ -1,4 +1,4 @@
-import { useItems, useConditions } from "@/features/hooks/hooks";
+import { useItems, useConditions } from "@/features/common/hooks";
 import Radio from "@/features/selection/Radio";
 
 export default function Selection() {

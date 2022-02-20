@@ -1,4 +1,8 @@
-import { useItems, useGhosts, useConditionPerItem } from "@/features/hooks/hooks";
+import {
+  useItems,
+  useGhosts,
+  useConditionPerItem,
+} from "@/features/common/hooks";
 
 export default function Details() {
   const items = useItems();
@@ -10,12 +14,15 @@ export default function Details() {
       .filter(o => o.id === ghostId)
       .flatMap(o => o.itemIds)
       .includes(itemId);
-    const conditionName = conditionPerItem.find(o => o.item.id === itemId)?.condition.name ?? "";
+    const conditionName =
+      conditionPerItem.find(o => o.item.id === itemId)?.condition.name ?? "";
     return hasItem ? conditionName : "-";
   };
 
   const getDeterminCount = (ghostId: number) => {
-    const determinItemIds = conditionPerItem.filter(o => o.condition.id === 1).map(o => o.item.id);
+    const determinItemIds = conditionPerItem
+      .filter(o => o.condition.id === 1)
+      .map(o => o.item.id);
     return ghosts
       .filter(o => o.id === ghostId)
       .flatMap(o => o.itemIds)
