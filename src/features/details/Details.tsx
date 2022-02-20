@@ -1,6 +1,6 @@
 import { useItems, useGhosts, useConditionPerItem } from "@/features/hooks/hooks";
 
-export default function Main() {
+export default function Details() {
   const items = useItems();
   const ghosts = useGhosts();
   const { conditionPerItem } = useConditionPerItem();

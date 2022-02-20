@@ -1,5 +1,5 @@
 import { shallow } from "enzyme";
-import Main from "@/features/Main";
+import Details from "@/features/details/Details";
 import { Item, Condition, Ghost, ItemCondition } from "@/stores/stores";
 import { useItems, useGhosts, useConditionPerItem } from "@/features/hooks/hooks";
 
@@ -10,7 +10,7 @@ const mockUseItems = useItems as jest.Mock;
 const mockUseGhosts = useGhosts as jest.Mock;
 const mockUseConditionPerItem = useConditionPerItem as jest.Mock;
 
-describe("Mount Main.", () => {
+describe("Mount Details.", () => {
   beforeEach(() => {
     mockUseItems.mockImplementation(() => mockItems);
     mockUseGhosts.mockImplementation(() => mockGhosts);
@@ -20,8 +20,8 @@ describe("Mount Main.", () => {
     }));
   });
 
-  test("Mount Main.", () => {
-    shallow(<Main />);
+  test("Mount Details.", () => {
+    shallow(<Details />);
     expect(mockUseItems).toBeCalledTimes(1);
     expect(mockUseGhosts).toBeCalledTimes(1);
     expect(mockUseConditionPerItem).toBeCalledTimes(1);
