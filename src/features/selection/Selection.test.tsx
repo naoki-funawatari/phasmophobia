@@ -1,27 +1,24 @@
 import { shallow } from "enzyme";
 import Selection from "@/features/selection/Selection";
-import { Item, Condition, ItemCondition } from "@/stores/stores";
-import { useItems, useConditions, useConditionPerItem } from "@/features/hooks/hooks";
+import { Item, Condition } from "@/stores/stores";
+import { useItems, useConditions } from "@/features/hooks/hooks";
 
 jest.mock("recoil");
 jest.mock("@/features/hooks/hooks");
 
 const mockUseItems = useItems as jest.Mock;
 const mockUseConditions = useConditions as jest.Mock;
-const mockUseConditionPerItem = useConditionPerItem as jest.Mock;
 
 describe("Mount Selection.", () => {
   beforeEach(() => {
     mockUseItems.mockImplementation(() => mockItems);
     mockUseConditions.mockImplementation(() => mockConditions);
-    mockUseConditionPerItem.mockImplementation(() => ({
-      conditionPerItem: mockItemConditions,
-      setConditionPerItem: () => {},
-    }));
   });
 
   test("Mount Selection.", () => {
     shallow(<Selection />);
+    expect(mockUseItems).toBeCalledTimes(1);
+    expect(mockUseConditions).toBeCalledTimes(1);
   });
 });
 
@@ -57,8 +54,3 @@ const mockConditions = [
     name: "除外",
   },
 ] as Condition[];
-
-const mockItemConditions = mockItems.map<ItemCondition>(item => ({
-  item,
-  condition: mockConditions[0],
-}));
