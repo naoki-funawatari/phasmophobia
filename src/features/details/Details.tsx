@@ -1,8 +1,7 @@
-import { useItems, useGhosts } from "@/features/common/hooks";
+import { useGhosts } from "@/features/common/hooks";
 import Detail from "@/features/details/Detail";
 
 export default function Details() {
-  const items = useItems();
   const ghosts = useGhosts();
 
   return (
@@ -11,11 +10,15 @@ export default function Details() {
         <thead>
           <tr>
             <th></th>
-            {items.map(item => (
-              <th key={`ghost-table-header-${item.id}`}>
-                <div className="item-name">{item.name}</div>
-              </th>
-            ))}
+            <th>
+              <div className="determin-name">証拠①</div>
+            </th>
+            <th>
+              <div className="determin-name">証拠②</div>
+            </th>
+            <th>
+              <div className="determin-name">証拠③</div>
+            </th>
             <th>カウント</th>
           </tr>
         </thead>
@@ -23,7 +26,7 @@ export default function Details() {
           {ghosts.map((ghost, index) => (
             <Detail
               key={`ghost-table-data-${ghost.id}-${index}`}
-              {...{ id: ghost.id, name: ghost.name, index }}
+              {...{ ghost, index }}
             />
           ))}
         </tbody>

@@ -30,7 +30,12 @@ describe("Mount Detail.", () => {
   });
 
   test("Mount Detail.", () => {
-    shallow(<Detail {...{ id: 1, name: "name", index: 1 }} />);
+    const ghost = {
+      id: 0,
+      name: "スピリット",
+      itemIds: [0, 2, 5],
+    };
+    shallow(<Detail {...{ ghost, index: 1 }} />);
   });
 });
 

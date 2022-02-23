@@ -16,7 +16,6 @@ export default function Selection() {
                 <div className="item-name">{item.name}</div>
               </th>
             ))}
-            <th className="count"></th>
           </tr>
         </thead>
         <tbody>
@@ -28,7 +27,6 @@ export default function Selection() {
                   <Radio itemId={item.id} conditionId={condition.id} />
                 </td>
               ))}
-              <td className="count"></td>
             </tr>
           ))}
         </tbody>
