@@ -13,7 +13,7 @@ export default function Details() {
             <th></th>
             {items.map(item => (
               <th key={`ghost-table-header-${item.id}`}>
-                <div style={{ whiteSpace: "pre" }}>{item.name}</div>
+                <div className="item-name">{item.name}</div>
               </th>
             ))}
             <th>カウント</th>

@@ -32,13 +32,13 @@ export default function Detail({
 
   return (
     <tr>
-      <td className="align-left">{name}</td>
+      <th className="align-left ghost-name">{name}</th>
       {items.map(item => (
         <td key={`ghost-table-data-${id}-${index}-${item.id}`}>
           <label>{`${getConditionName(id, item.id)}`}</label>
         </td>
       ))}
-      <td>{determinCount}</td>
+      <td className="count">{determinCount}</td>
     </tr>
   );
 }

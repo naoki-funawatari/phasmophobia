@@ -13,20 +13,22 @@ export default function Selection() {
             <th></th>
             {items.map(item => (
               <th key={`evidence-table-header-${item.id}`}>
-                <div style={{ whiteSpace: "pre" }}>{item.name}</div>
+                <div className="item-name">{item.name}</div>
               </th>
             ))}
+            <th className="count"></th>
           </tr>
         </thead>
         <tbody>
           {conditions.map((condition, i) => (
             <tr key={`evidence-table-data-${condition.id}-${i}`}>
-              <td className="align-left">{condition.name}</td>
+              <th className="align-left condition-name">{condition.name}</th>
               {items.map(item => (
                 <td key={`evidence-table-data-${condition.id}-${i}-${item.id}`}>
                   <Radio itemId={item.id} conditionId={condition.id} />
                 </td>
               ))}
+              <td className="count"></td>
             </tr>
           ))}
         </tbody>
