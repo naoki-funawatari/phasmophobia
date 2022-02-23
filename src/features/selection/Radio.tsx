@@ -1,6 +1,16 @@
-import { useItems, useConditions, useConditionPerItem } from "@/features/common/hooks";
+import {
+  useItems,
+  useConditions,
+  useConditionPerItem,
+} from "@/features/common/hooks";
 
-export default function Radio({ itemId, conditionId }: { itemId: number; conditionId: number }) {
+export default function Radio({
+  itemId,
+  conditionId,
+}: {
+  itemId: number;
+  conditionId: number;
+}) {
   const items = useItems();
   const conditions = useConditions();
   const { conditionPerItem, setConditionPerItem } = useConditionPerItem();
@@ -25,13 +35,13 @@ export default function Radio({ itemId, conditionId }: { itemId: number; conditi
 
   return (
     <label>
-      {`${isDetermin()}`}
       <input
         type="radio"
         name={`evidence-table-data-${itemId}`}
         checked={isDetermin()}
         onChange={handleEvidenceClicked}
       />
+      {`${isDetermin()}`}
     </label>
   );
 }

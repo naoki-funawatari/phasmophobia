@@ -21,7 +21,7 @@ export default function Selection() {
         <tbody>
           {conditions.map((condition, i) => (
             <tr key={`evidence-table-data-${condition.id}-${i}`}>
-              <td>{condition.name}</td>
+              <td className="align-left">{condition.name}</td>
               {items.map(item => (
                 <td key={`evidence-table-data-${condition.id}-${i}-${item.id}`}>
                   <Radio itemId={item.id} conditionId={condition.id} />

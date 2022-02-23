@@ -32,7 +32,7 @@ export default function Detail({
 
   return (
     <tr>
-      <td>{name}</td>
+      <td className="align-left">{name}</td>
       {items.map(item => (
         <td key={`ghost-table-data-${id}-${index}-${item.id}`}>
           <label>{`${getConditionName(id, item.id)}`}</label>
