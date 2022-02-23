@@ -12,7 +12,9 @@ export default function Details() {
           <tr>
             <th></th>
             {items.map(item => (
-              <th key={`ghost-table-header-${item.id}`}>{item.name}</th>
+              <th key={`ghost-table-header-${item.id}`}>
+                <div style={{ whiteSpace: "pre" }}>{item.name}</div>
+              </th>
             ))}
             <th>カウント</th>
           </tr>

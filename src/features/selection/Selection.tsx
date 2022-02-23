@@ -12,7 +12,9 @@ export default function Selection() {
           <tr>
             <th></th>
             {items.map(item => (
-              <th key={`evidence-table-header-${item.id}`}>{item.name}</th>
+              <th key={`evidence-table-header-${item.id}`}>
+                <div style={{ whiteSpace: "pre" }}>{item.name}</div>
+              </th>
             ))}
           </tr>
         </thead>
