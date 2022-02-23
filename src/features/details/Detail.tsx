@@ -5,6 +5,8 @@ import {
   useDeterminCount,
 } from "@/features/common/hooks";
 
+const colors = ["", "#ffffc1", "#ffe0c1", "#ffc1c1", "#c1e0ff"];
+
 export default function Detail({
   id,
   name,
@@ -20,9 +22,9 @@ export default function Detail({
   const { conditionPerItem } = useConditionPerItem();
 
   // istanbul ignore next
-  const getConditionName = (ghostId: number, itemId: number) => {
+  const getConditionName = (itemId: number) => {
     const hasItem = ghosts
-      .filter(o => o.id === ghostId)
+      .filter(o => o.id === id)
       .flatMap(o => o.itemIds)
       .includes(itemId);
     const conditionName =
@@ -30,12 +32,23 @@ export default function Detail({
     return hasItem ? conditionName : "-";
   };
 
+  // istanbul ignore next
+  const hasExcluded = () => {
+    const itemIds = ghosts.filter(o => o.id === id).flatMap(o => o.itemIds);
+    return !!conditionPerItem
+      .filter(o => itemIds.includes(o.item.id))
+      .filter(o => o.condition.id === 2).length;
+  };
+
+  // istanbul ignore next
+  const color = hasExcluded() ? colors[4] : colors[determinCount];
+
   return (
-    <tr>
+    <tr style={{ backgroundColor: color }}>
       <th className="align-left ghost-name">{name}</th>
       {items.map(item => (
         <td key={`ghost-table-data-${id}-${index}-${item.id}`}>
-          <label>{`${getConditionName(id, item.id)}`}</label>
+          <label>{`${getConditionName(item.id)}`}</label>
         </td>
       ))}
       <td className="count">{determinCount}</td>
