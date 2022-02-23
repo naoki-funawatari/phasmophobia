@@ -1,16 +1,17 @@
 table {
   margin-left: auto;
   margin-right: auto;
-}
-
-td {
-  text-align: center;
-  padding: 3px 5px;
+  border-spacing: 1px;
 }
 
 th,
 td {
+  padding: 3px 5px;
   border-bottom: 1px dotted black;
+}
+
+td {
+  text-align: center;
 }
 
 .align-left {
