@@ -1,14 +1,18 @@
 import { shallow } from "enzyme";
 import Radio from "@/features/selection/Radio";
 import { Item, Condition, ItemCondition } from "@/features/common/stores";
-import { useItems, useConditions, useConditionPerItem } from "@/features/common/hooks";
+import {
+  useItems,
+  useConditions,
+  useItemConditions,
+} from "@/features/common/hooks";
 
 jest.mock("recoil");
 jest.mock("@/features/common/hooks");
 
 const mockUseItems = useItems as jest.Mock;
 const mockUseConditions = useConditions as jest.Mock;
-const mockUseConditionPerItem = useConditionPerItem as jest.Mock;
+const mockUseConditionPerItem = useItemConditions as jest.Mock;
 
 describe("Mount Radio.", () => {
   const setConditionPerItem = jest.fn();
@@ -17,7 +21,7 @@ describe("Mount Radio.", () => {
     mockUseItems.mockImplementation(() => mockItems);
     mockUseConditions.mockImplementation(() => mockConditions);
     mockUseConditionPerItem.mockImplementation(() => ({
-      conditionPerItem: mockItemConditions,
+      itemConditions: mockItemConditions,
       setConditionPerItem,
     }));
   });

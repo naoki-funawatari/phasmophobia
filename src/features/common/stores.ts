@@ -65,9 +65,9 @@ export const determinCountStore = selectorFamily<number, number>({
   get: ghostId => {
     // istanbul ignore next
     return ({ get }) => {
-      const conditionPerItem = get(itemConditionsStore);
+      const itemConditions = get(itemConditionsStore);
       const ghosts = get(ghostsStore);
-      const determinItemIds = conditionPerItem
+      const determinItemIds = itemConditions
         .filter(o => o.condition.id === 1)
         .map(o => o.item.id);
 

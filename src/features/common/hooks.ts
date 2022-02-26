@@ -13,10 +13,10 @@ export const useConditions = () => useRecoilValue(conditionsStore);
 
 export const useGhosts = () => useRecoilValue(ghostsStore);
 
-export const useConditionPerItem = () => {
-  const [conditionPerItem, setConditionPerItem] =
+export const useItemConditions = () => {
+  const [itemConditions, setConditionPerItem] =
     useRecoilState(itemConditionsStore);
-  return { conditionPerItem, setConditionPerItem };
+  return { itemConditions, setConditionPerItem };
 };
 
 export const useDeterminCount = (ghostId: number) =>

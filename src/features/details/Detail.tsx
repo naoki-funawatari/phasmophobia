@@ -1,5 +1,5 @@
 import { Ghost } from "@/features/common/stores";
-import { useConditionPerItem, useDeterminCount } from "@/features/common/hooks";
+import { useItemConditions, useDeterminCount } from "@/features/common/hooks";
 
 const colors = ["", "#ffffc1", "#ffe0c1", "#ffc1c1", "#c1e0ff"];
 
@@ -12,7 +12,7 @@ export default function Detail({
 }) {
   const { id, name, items } = ghost;
   const determinCount = useDeterminCount(id);
-  const { conditionPerItem } = useConditionPerItem();
+  const { itemConditions } = useItemConditions();
 
   // istanbul ignore next
   const getItemName = (itemId: number) => {
@@ -21,7 +21,7 @@ export default function Detail({
 
   // istanbul ignore next
   const isSelected = (itemId: number) => {
-    return !!conditionPerItem
+    return !!itemConditions
       .filter(o => ghost.items.map(o => o.id).includes(o.item.id))
       .filter(o => o.item.id === itemId)
       .filter(o => o.condition.id === 1).length;
@@ -29,7 +29,7 @@ export default function Detail({
 
   // istanbul ignore next
   const hasExcluded = () => {
-    return !!conditionPerItem
+    return !!itemConditions
       .filter(o => items.map(p => p.id).includes(o.item.id))
       .filter(o => o.condition.id === 2).length;
   };

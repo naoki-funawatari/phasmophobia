@@ -1,17 +1,17 @@
 import { shallow } from "enzyme";
 import Detail from "@/features/details/Detail";
 import { ItemCondition } from "@/features/common/stores";
-import { useConditionPerItem } from "@/features/common/hooks";
+import { useItemConditions } from "@/features/common/hooks";
 
 jest.mock("recoil");
 jest.mock("@/features/common/hooks");
 
-const mockUseConditionPerItem = useConditionPerItem as jest.Mock;
+const mockUseConditionPerItem = useItemConditions as jest.Mock;
 
 describe("Mount Detail.", () => {
   beforeEach(() => {
     mockUseConditionPerItem.mockImplementation(() => ({
-      conditionPerItem: mockItemConditions,
+      itemConditions: mockItemConditions,
       setConditionPerItem: () => {},
     }));
   });

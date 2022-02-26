@@ -1,7 +1,7 @@
 import {
   useItems,
   useConditions,
-  useConditionPerItem,
+  useItemConditions,
 } from "@/features/common/hooks";
 
 export default function Radio({
@@ -13,10 +13,10 @@ export default function Radio({
 }) {
   const items = useItems();
   const conditions = useConditions();
-  const { conditionPerItem, setConditionPerItem } = useConditionPerItem();
+  const { itemConditions, setConditionPerItem } = useItemConditions();
 
   const isDetermin = () => {
-    return !!conditionPerItem
+    return !!itemConditions
       .filter(o => o.item.id === itemId)
       .filter(o => o.condition.id === conditionId).length;
   };
@@ -24,13 +24,13 @@ export default function Radio({
   const handleEvidenceClicked = () => {
     const newItem = items.find(o => o.id === itemId);
     const newCondition = conditions.find(o => o.id === conditionId);
-    const newconditionPerItem = conditionPerItem.map(o =>
+    const newitemConditions = itemConditions.map(o =>
       newItem && newCondition && o.item.id === itemId
         ? { item: newItem, condition: newCondition }
         : o
     );
 
-    setConditionPerItem(newconditionPerItem);
+    setConditionPerItem(newitemConditions);
   };
 
   return (

@@ -3,7 +3,7 @@ import {
   useItems,
   useConditions,
   useGhosts,
-  useConditionPerItem,
+  useItemConditions,
   useDeterminCount,
 } from "@/features/common/hooks";
 
@@ -37,8 +37,8 @@ describe("Call Function.", () => {
     expect(mockUseRecoilValue).toBeCalledTimes(1);
   });
 
-  test("Call useConditionPerItem.", () => {
-    useConditionPerItem();
+  test("Call useItemConditions.", () => {
+    useItemConditions();
     expect(mockUseRecoilState).toBeCalledTimes(1);
   });
 
