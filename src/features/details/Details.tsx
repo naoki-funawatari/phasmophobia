@@ -1,8 +1,32 @@
-import { useGhosts } from "@/features/common/hooks";
+import { useGhosts, useItemConditions } from "@/features/common/hooks";
 import Detail from "@/features/details/Detail";
 
 export default function Details() {
   const ghosts = useGhosts();
+  const { itemConditions } = useItemConditions();
+  const selectedIds = itemConditions
+    .filter(o => o.condition.id === 1)
+    .map(o => o.item.id);
+  const excludedIds = itemConditions
+    .filter(o => o.condition.id === 2)
+    .map(o => o.item.id);
+  const sortedGhosts = [...ghosts];
+
+  sortedGhosts.sort((a, b) => {
+    const itemIdsA = a.items.map(p => p.id);
+    const itemIdsB = b.items.map(p => p.id);
+    const selectedIdsA = itemIdsA.filter(id => selectedIds.includes(id));
+    const selectedIdsB = itemIdsB.filter(id => selectedIds.includes(id));
+    return selectedIdsB.length - selectedIdsA.length;
+  });
+
+  sortedGhosts.sort((a, b) => {
+    const itemIdsA = a.items.map(p => p.id);
+    const itemIdsB = b.items.map(p => p.id);
+    const excludedIdsA = itemIdsA.filter(p => excludedIds.includes(p));
+    const excludedIdsB = itemIdsB.filter(p => excludedIds.includes(p));
+    return excludedIdsA.length - excludedIdsB.length;
+  });
 
   return (
     <main>
@@ -23,7 +47,7 @@ export default function Details() {
           </tr>
         </thead>
         <tbody>
-          {ghosts.map((ghost, index) => (
+          {sortedGhosts.map((ghost, index) => (
             <Detail
               key={`ghost-table-data-${ghost.id}-${index}`}
               {...{ ghost, index }}
