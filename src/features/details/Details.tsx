@@ -7,6 +7,7 @@ export default function Details() {
   const selectedIds = itemConditions
     .filter(o => o.condition.id === 1)
     .map(o => o.item.id);
+  // istanbul ignore next;
   const excludedIds = itemConditions
     .filter(o => o.condition.id === 2)
     .map(o => o.item.id);
