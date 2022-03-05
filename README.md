@@ -1,3 +1,12 @@
+# Docker コマンド
+
+docker-compose down
+docker-compose build --no-cache
+docker-compose up -d
+
+docker exec -it phasmophobia /bin/sh
+docker exec -it phasmophobia /bin/bash
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

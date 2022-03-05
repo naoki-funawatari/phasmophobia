@@ -1,0 +1,16 @@
+version: "3"
+services:
+  web:
+    image: phasmophobia
+    build: .
+    container_name: phasmophobia
+    working_dir: /app
+    volumes:
+      - /app/node_modules
+      - /C/Projects/phasmophobia:/app
+    ports:
+      - 3001:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    restart: always
+    tty: true
