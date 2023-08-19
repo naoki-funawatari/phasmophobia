@@ -37,7 +37,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "craco build && cp -r $(pwd)/build/* $(pwd)/docs/",
     "test": "craco test --coverage --watchAll",
     "eject": "craco eject"
   },
