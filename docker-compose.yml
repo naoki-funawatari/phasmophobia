@@ -7,7 +7,7 @@ services:
     working_dir: /app
     volumes:
       - /app/node_modules
-      - /C/Projects/phasmophobia:/app
+      - /home/naoki/phasmophobia:/app
     ports:
       - 3001:3000
     environment:

@@ -1,8 +1,8 @@
 # Docker コマンド
 
-docker-compose down
-docker-compose build --no-cache
-docker-compose up -d
+docker compose down
+docker compose build --no-cache
+docker compose up -d
 
 docker exec -it phasmophobia /bin/sh
 docker exec -it phasmophobia /bin/bash
