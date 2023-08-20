@@ -28,6 +28,11 @@ export interface EvidenceCondition {
   condition: Condition;
 }
 
+export interface GhostEvidenceList {
+  ghostId: number;
+  evidenceIds: number[];
+}
+
 export const evidenceListStore = atom<Evidence[]>({
   key: "evidenceListStore",
   default: selector({

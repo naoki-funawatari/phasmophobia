@@ -1,122 +1,98 @@
 [
   {
     "id": 1,
-    "name": "スピリット",
-    "evidenceIds": [1, 5, 6]
+    "name": "スピリット"
   },
   {
     "id": 2,
-    "name": "レイス",
-    "evidenceIds": [1, 2, 6]
+    "name": "レイス"
   },
   {
     "id": 3,
-    "name": "ファントム",
-    "evidenceIds": [2, 3, 6]
+    "name": "ファントム"
   },
   {
     "id": 4,
-    "name": "ポルターガイスト",
-    "evidenceIds": [3, 5, 6]
+    "name": "ポルターガイスト"
   },
   {
     "id": 5,
-    "name": "バンシー",
-    "evidenceIds": [2, 3, 4]
+    "name": "バンシー"
   },
   {
     "id": 6,
-    "name": "ジン",
-    "evidenceIds": [1, 3, 7]
+    "name": "ジン"
   },
   {
     "id": 7,
-    "name": "メアー",
-    "evidenceIds": [4, 5, 6]
+    "name": "メアー"
   },
   {
     "id": 8,
-    "name": "レヴナント",
-    "evidenceIds": [4, 5, 7]
+    "name": "レヴナント"
   },
   {
     "id": 9,
-    "name": "シェード",
-    "evidenceIds": [1, 5, 7]
+    "name": "シェード"
   },
   {
     "id": 10,
-    "name": "デーモン",
-    "evidenceIds": [3, 5, 7]
+    "name": "デーモン"
   },
   {
     "id": 11,
-    "name": "幽霊",
-    "evidenceIds": [2, 4, 7]
+    "name": "幽霊"
   },
   {
     "id": 12,
-    "name": "鬼",
-    "evidenceIds": [1, 2, 7]
+    "name": "鬼"
   },
   {
     "id": 13,
-    "name": "妖怪",
-    "evidenceIds": [2, 4, 6]
+    "name": "妖怪"
   },
   {
     "id": 14,
-    "name": "ハントゥ",
-    "evidenceIds": [3, 4, 7]
+    "name": "ハントゥ"
   },
   {
     "id": 15,
-    "name": "御霊",
-    "evidenceIds": [1, 2, 3]
+    "name": "御霊"
   },
   {
     "id": 16,
-    "name": "マイリング",
-    "evidenceIds": [1, 3, 5]
+    "name": "マイリング"
   },
   {
     "id": 17,
-    "name": "怨霊",
-    "evidenceIds": [4, 6, 7]
+    "name": "怨霊"
   },
   {
     "id": 18,
-    "name": "ツインズ",
-    "evidenceIds": [1, 6, 7]
+    "name": "ツインズ"
   },
   {
     "id": 19,
-    "name": "雷獣",
-    "evidenceIds": [1, 2, 4]
+    "name": "雷獣"
   },
   {
     "id": 20,
-    "name": "化け狐",
-    "evidenceIds": [1, 3, 4]
+    "name": "化け狐"
   },
   {
     "id": 21,
-    "name": "ミミック",
-    "evidenceIds": [3, 6, 7]
+    "name": "ミミック"
   },
   {
     "id": 22,
-    "name": "モーロイ",
-    "evidenceIds": [5, 6, 7]
+    "name": "モーロイ"
   },
   {
     "id": 23,
-    "name": "デオヘン",
-    "evidenceIds": [2, 5, 6]
+    "name": "デオヘン"
   },
   {
     "id": 24,
-    "name": "セーイ",
-    "evidenceIds": [2, 4, 5]
+    "name": "セーイ"
   }
 ]

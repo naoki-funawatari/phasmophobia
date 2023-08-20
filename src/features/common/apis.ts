@@ -1,11 +1,13 @@
 import evidenceListjson from "@/database/evidenceList.json";
 import conditionsjson from "@/database/conditions.json";
+import ghostEvidenceListjson from "@/database/ghostEvidenceList.json";
 import ghostsjson from "@/database/ghosts.json";
 import type {
   Evidence,
   Condition,
   Ghost,
   EvidenceCondition,
+  GhostEvidenceList,
 } from "@/features/common/stores";
 
 export const getEvidenceList = () => {
@@ -14,12 +16,11 @@ export const getEvidenceList = () => {
   });
 };
 
-export const getEvidence = (id: number) => {
-  const evidence = evidenceListjson
-    .map<Evidence>(o => o)
-    .find(o => o.id === id);
+export const getEvidence = async (id: number) => {
+  const evidenceList = await getEvidenceList();
+  const evidence = evidenceList.map(o => o).find(o => o.id === id);
 
-  if (evidence === undefined) {
+  if (!evidence) {
     throw new Error();
   }
 
@@ -33,10 +34,12 @@ export const getConditions = () => {
 };
 
 export const getGhosts = async () => {
+  const ghostEvidenceList = await getGhostEvidenceList();
   const ghosts = ghostsjson.map<Promise<Ghost>>(async ghost => {
-    const evidenceList = ghost.evidenceIds.map(evidenceId =>
-      getEvidence(evidenceId),
-    );
+    const evidenceList = ghostEvidenceList
+      .find(o => o.ghostId === ghost.id)!
+      .evidenceIds.map(evidenceId => getEvidence(evidenceId));
+
     return {
       id: ghost.id,
       name: ghost.name,
@@ -55,4 +58,10 @@ export const getEvidenceConditions = async () => {
     evidence,
     condition: conditions[0],
   }));
+};
+
+export const getGhostEvidenceList = async () => {
+  return new Promise<GhostEvidenceList[]>(resolve => {
+    resolve(ghostEvidenceListjson);
+  });
 };

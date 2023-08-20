@@ -1,0 +1,98 @@
+[
+  {
+    "ghostId": 1,
+    "evidenceIds": [1, 5, 6]
+  },
+  {
+    "ghostId": 2,
+    "evidenceIds": [1, 2, 6]
+  },
+  {
+    "ghostId": 3,
+    "evidenceIds": [2, 3, 6]
+  },
+  {
+    "ghostId": 4,
+    "evidenceIds": [3, 5, 6]
+  },
+  {
+    "ghostId": 5,
+    "evidenceIds": [2, 3, 4]
+  },
+  {
+    "ghostId": 6,
+    "evidenceIds": [1, 3, 7]
+  },
+  {
+    "ghostId": 7,
+    "evidenceIds": [4, 5, 6]
+  },
+  {
+    "ghostId": 8,
+    "evidenceIds": [4, 5, 7]
+  },
+  {
+    "ghostId": 9,
+    "evidenceIds": [1, 5, 7]
+  },
+  {
+    "ghostId": 10,
+    "evidenceIds": [3, 5, 7]
+  },
+  {
+    "ghostId": 11,
+    "evidenceIds": [2, 4, 7]
+  },
+  {
+    "ghostId": 12,
+    "evidenceIds": [1, 2, 7]
+  },
+  {
+    "ghostId": 13,
+    "evidenceIds": [2, 4, 6]
+  },
+  {
+    "ghostId": 14,
+    "evidenceIds": [3, 4, 7]
+  },
+  {
+    "ghostId": 15,
+    "evidenceIds": [1, 2, 3]
+  },
+  {
+    "ghostId": 16,
+    "evidenceIds": [1, 3, 5]
+  },
+  {
+    "ghostId": 17,
+    "evidenceIds": [4, 6, 7]
+  },
+  {
+    "ghostId": 18,
+    "evidenceIds": [1, 6, 7]
+  },
+  {
+    "ghostId": 19,
+    "evidenceIds": [1, 2, 4]
+  },
+  {
+    "ghostId": 20,
+    "evidenceIds": [1, 3, 4]
+  },
+  {
+    "ghostId": 21,
+    "evidenceIds": [3, 6, 7]
+  },
+  {
+    "ghostId": 22,
+    "evidenceIds": [5, 6, 7]
+  },
+  {
+    "ghostId": 23,
+    "evidenceIds": [2, 5, 6]
+  },
+  {
+    "ghostId": 24,
+    "evidenceIds": [2, 4, 5]
+  }
+]
