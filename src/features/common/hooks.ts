@@ -1,22 +1,23 @@
 import { useRecoilValue, useRecoilState } from "recoil";
 import {
-  itemsStore,
+  evidenceListStore,
   conditionsStore,
   ghostsStore,
-  itemConditionsStore,
+  evidenceConditionsStore,
   determinCountStore,
 } from "@/features/common/stores";
 
-export const useItems = () => useRecoilValue(itemsStore);
+export const useEvidenceList = () => useRecoilValue(evidenceListStore);
 
 export const useConditions = () => useRecoilValue(conditionsStore);
 
 export const useGhosts = () => useRecoilValue(ghostsStore);
 
-export const useItemConditions = () => {
-  const [itemConditions, setConditionPerItem] =
-    useRecoilState(itemConditionsStore);
-  return { itemConditions, setConditionPerItem };
+export const useEvidenceConditions = () => {
+  const [evidenceConditions, setConditionPerEvidence] = useRecoilState(
+    evidenceConditionsStore,
+  );
+  return { evidenceConditions, setConditionPerEvidence };
 };
 
 export const useDeterminCount = (ghostId: number) =>

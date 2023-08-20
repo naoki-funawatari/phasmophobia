@@ -1,27 +1,29 @@
-import itemsjson from "@/database/items.json";
+import evidenceListjson from "@/database/evidenceList.json";
 import conditionsjson from "@/database/conditions.json";
 import ghostsjson from "@/database/ghosts.json";
 import type {
-  Item,
+  Evidence,
   Condition,
   Ghost,
-  ItemCondition,
+  EvidenceCondition,
 } from "@/features/common/stores";
 
-export const getItems = () => {
-  return new Promise<Item[]>(resolve => {
-    resolve(itemsjson);
+export const getEvidenceList = () => {
+  return new Promise<Evidence[]>(resolve => {
+    resolve(evidenceListjson);
   });
 };
 
-export const getItem = (id: number) => {
-  const item = itemsjson.map<Item>(o => o).find(o => o.id === id);
+export const getEvidence = (id: number) => {
+  const evidence = evidenceListjson
+    .map<Evidence>(o => o)
+    .find(o => o.id === id);
 
-  if (item === undefined) {
+  if (evidence === undefined) {
     throw new Error();
   }
 
-  return item;
+  return evidence;
 };
 
 export const getConditions = () => {
@@ -32,23 +34,25 @@ export const getConditions = () => {
 
 export const getGhosts = async () => {
   const ghosts = ghostsjson.map<Promise<Ghost>>(async ghost => {
-    const items = ghost.itemIds.map(itemId => getItem(itemId));
+    const evidenceList = ghost.evidenceIds.map(evidenceId =>
+      getEvidence(evidenceId),
+    );
     return {
       id: ghost.id,
       name: ghost.name,
-      items: await Promise.all(items),
+      evidenceList: await Promise.all(evidenceList),
     };
   });
 
   return await Promise.all(ghosts);
 };
 
-export const getItemConditions = async () => {
-  const items = await getItems();
+export const getEvidenceConditions = async () => {
+  const evidenceList = await getEvidenceList();
   const conditions = await getConditions();
 
-  return items.map<ItemCondition>(item => ({
-    item,
+  return evidenceList.map<EvidenceCondition>(evidence => ({
+    evidence,
     condition: conditions[0],
   }));
 };

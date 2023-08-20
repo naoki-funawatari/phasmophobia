@@ -1,12 +1,12 @@
 import { atom, selector, selectorFamily } from "recoil";
 import {
-  getItems,
+  getEvidenceList,
   getConditions,
   getGhosts,
-  getItemConditions,
+  getEvidenceConditions,
 } from "@/features/common/apis";
 
-export interface Item {
+export interface Evidence {
   id: number;
   name: string;
 }
@@ -20,19 +20,19 @@ export interface Condition {
 export interface Ghost {
   id: number;
   name: string;
-  items: Item[];
+  evidenceList: Evidence[];
 }
 
-export interface ItemCondition {
-  item: Item;
+export interface EvidenceCondition {
+  evidence: Evidence;
   condition: Condition;
 }
 
-export const itemsStore = atom<Item[]>({
-  key: "itemsStore",
+export const evidenceListStore = atom<Evidence[]>({
+  key: "evidenceListStore",
   default: selector({
-    key: "itemsStoreAsync",
-    get: async () => await getItems(),
+    key: "evidenceListStoreAsync",
+    get: async () => await getEvidenceList(),
   }),
 });
 
@@ -52,11 +52,11 @@ export const ghostsStore = atom<Ghost[]>({
   }),
 });
 
-export const itemConditionsStore = atom<ItemCondition[]>({
-  key: "itemConditionsStore",
+export const evidenceConditionsStore = atom<EvidenceCondition[]>({
+  key: "evidenceConditionsStore",
   default: selector({
-    key: "itemConditionsStoreAsync",
-    get: async () => await getItemConditions(),
+    key: "evidenceConditionsStoreAsync",
+    get: async () => await getEvidenceConditions(),
   }),
 });
 
@@ -65,16 +65,16 @@ export const determinCountStore = selectorFamily<number, number>({
   get: ghostId => {
     // istanbul ignore next
     return ({ get }) => {
-      const itemConditions = get(itemConditionsStore);
+      const evidenceConditions = get(evidenceConditionsStore);
       const ghosts = get(ghostsStore);
-      const determinItemIds = itemConditions
+      const determinEvidenceIds = evidenceConditions
         .filter(o => o.condition.id === 1)
-        .map(o => o.item.id);
+        .map(o => o.evidence.id);
 
       return ghosts
         .filter(o => o.id === ghostId)
-        .flatMap(o => o.items)
-        .filter(o => determinItemIds.includes(o.id)).length;
+        .flatMap(o => o.evidenceList)
+        .filter(o => determinEvidenceIds.includes(o.id)).length;
     };
   },
 });

@@ -1,26 +1,26 @@
 import { shallow } from "enzyme";
 import Details from "@/features/details/Details";
-import { Ghost, ItemCondition } from "@/features/common/stores";
-import { useGhosts, useItemConditions } from "@/features/common/hooks";
+import { Ghost, EvidenceCondition } from "@/features/common/stores";
+import { useGhosts, useEvidenceConditions } from "@/features/common/hooks";
 
 jest.mock("recoil");
 jest.mock("@/features/common/hooks");
 
 const mockUseGhosts = useGhosts as jest.Mock;
-const mockUseItemConditions = useItemConditions as jest.Mock;
+const mockUseEvidenceConditions = useEvidenceConditions as jest.Mock;
 
 describe("Mount Details.", () => {
   beforeEach(() => {
     mockUseGhosts.mockImplementation(() => mockGhosts);
-    mockUseItemConditions.mockImplementation(() => ({
-      itemConditions: mockItemConditions,
+    mockUseEvidenceConditions.mockImplementation(() => ({
+      evidenceConditions: mockEvidenceConditions,
     }));
   });
 
   test("Mount Details.", () => {
     shallow(<Details />);
     expect(mockUseGhosts).toBeCalledTimes(1);
-    expect(mockUseItemConditions).toBeCalledTimes(1);
+    expect(mockUseEvidenceConditions).toBeCalledTimes(1);
   });
 });
 
@@ -28,7 +28,7 @@ const mockGhosts = [
   {
     id: 0,
     name: "スピリット",
-    items: [
+    evidenceList: [
       {
         id: 0,
         name: "EMFレベル5",
@@ -46,7 +46,7 @@ const mockGhosts = [
   {
     id: 1,
     name: "レイス",
-    items: [
+    evidenceList: [
       {
         id: 0,
         name: "EMFレベル5",
@@ -64,7 +64,7 @@ const mockGhosts = [
   {
     id: 2,
     name: "シェード",
-    items: [
+    evidenceList: [
       {
         id: 0,
         name: "EMFレベル5",
@@ -81,9 +81,9 @@ const mockGhosts = [
   },
 ] as Ghost[];
 
-const mockItemConditions: ItemCondition[] = [
+const mockEvidenceConditions: EvidenceCondition[] = [
   {
-    item: {
+    evidence: {
       id: 0,
       name: "EMFレベル5",
     },
@@ -94,7 +94,7 @@ const mockItemConditions: ItemCondition[] = [
     },
   },
   {
-    item: {
+    evidence: {
       id: 1,
       name: "ゴーストオーブ",
     },
@@ -105,7 +105,7 @@ const mockItemConditions: ItemCondition[] = [
     },
   },
   {
-    item: {
+    evidence: {
       id: 2,
       name: "スピリットボックス",
     },

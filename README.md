@@ -7,6 +7,8 @@ docker compose up -d
 docker exec -it phasmophobia /bin/sh
 docker exec -it phasmophobia /bin/bash
 
+yarn install
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

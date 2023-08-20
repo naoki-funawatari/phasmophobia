@@ -1,5 +1,8 @@
 import { Ghost } from "@/features/common/stores";
-import { useItemConditions, useDeterminCount } from "@/features/common/hooks";
+import {
+  useEvidenceConditions,
+  useDeterminCount,
+} from "@/features/common/hooks";
 
 const colors = ["", "#ffffc1", "#ffe0c1", "#ffc1c1", "#c1e0ff"];
 
@@ -10,27 +13,27 @@ export default function Detail({
   ghost: Ghost;
   index: number;
 }) {
-  const { id, name, items } = ghost;
+  const { id, name, evidenceList } = ghost;
   const determinCount = useDeterminCount(id);
-  const { itemConditions } = useItemConditions();
+  const { evidenceConditions } = useEvidenceConditions();
 
   // istanbul ignore next
-  const getItemName = (itemId: number) => {
-    return items.find(o => o.id === itemId)?.name;
+  const getEvidenceName = (evidenceId: number) => {
+    return evidenceList.find(o => o.id === evidenceId)?.name;
   };
 
   // istanbul ignore next
-  const isSelected = (itemId: number) => {
-    return !!itemConditions
-      .filter(o => ghost.items.map(o => o.id).includes(o.item.id))
-      .filter(o => o.item.id === itemId)
+  const isSelected = (evidenceId: number) => {
+    return !!evidenceConditions
+      .filter(o => ghost.evidenceList.map(o => o.id).includes(o.evidence.id))
+      .filter(o => o.evidence.id === evidenceId)
       .filter(o => o.condition.id === 1).length;
   };
 
   // istanbul ignore next
   const hasExcluded = () => {
-    return !!itemConditions
-      .filter(o => items.map(p => p.id).includes(o.item.id))
+    return !!evidenceConditions
+      .filter(o => evidenceList.map(p => p.id).includes(o.evidence.id))
       .filter(o => o.condition.id === 2).length;
   };
 
@@ -40,13 +43,15 @@ export default function Detail({
   return (
     <tr>
       <th className="align-left ghost-name">{name}</th>
-      {items.map(item => (
+      {evidenceList.map(evidence => (
         <td
-          key={`ghost-table-data-${id}-${index}-${item.id}`}
-          id={`ghost-table-data-${id}-${index}-${item.id}`}
-          style={{ backgroundColor: isSelected(item.id) ? "#ffffc1" : "white" }}
+          key={`ghost-table-data-${id}-${index}-${evidence.id}`}
+          id={`ghost-table-data-${id}-${index}-${evidence.id}`}
+          style={{
+            backgroundColor: isSelected(evidence.id) ? "#ffffc1" : "white",
+          }}
         >
-          {getItemName(item.id)}
+          {getEvidenceName(evidence.id)}
         </td>
       ))}
       <td className="count" style={{ backgroundColor: countColor }}>

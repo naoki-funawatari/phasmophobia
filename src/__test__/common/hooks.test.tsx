@@ -1,9 +1,9 @@
 import { useRecoilValue, useRecoilState } from "recoil";
 import {
-  useItems,
+  useEvidenceList,
   useConditions,
   useGhosts,
-  useItemConditions,
+  useEvidenceConditions,
   useDeterminCount,
 } from "@/features/common/hooks";
 
@@ -22,8 +22,8 @@ describe("Call Function.", () => {
     mockUseRecoilState.mockImplementation(() => [0, 1]);
   });
 
-  test("Call useItems.", () => {
-    useItems();
+  test("Call useEvidenceList.", () => {
+    useEvidenceList();
     expect(mockUseRecoilValue).toBeCalledTimes(1);
   });
 
@@ -37,8 +37,8 @@ describe("Call Function.", () => {
     expect(mockUseRecoilValue).toBeCalledTimes(1);
   });
 
-  test("Call useItemConditions.", () => {
-    useItemConditions();
+  test("Call useEvidenceConditions.", () => {
+    useEvidenceConditions();
     expect(mockUseRecoilState).toBeCalledTimes(1);
   });
 

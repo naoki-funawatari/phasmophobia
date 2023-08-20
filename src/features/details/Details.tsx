@@ -1,32 +1,32 @@
 import { Scrollbars } from "react-custom-scrollbars";
-import { useGhosts, useItemConditions } from "@/features/common/hooks";
+import { useGhosts, useEvidenceConditions } from "@/features/common/hooks";
 import Detail from "@/features/details/Detail";
 
 export default function Details() {
   const ghosts = useGhosts();
-  const { itemConditions } = useItemConditions();
-  const selectedIds = itemConditions
+  const { evidenceConditions } = useEvidenceConditions();
+  const selectedIds = evidenceConditions
     .filter(o => o.condition.id === 1)
-    .map(o => o.item.id);
+    .map(o => o.evidence.id);
   // istanbul ignore next;
-  const excludedIds = itemConditions
+  const excludedIds = evidenceConditions
     .filter(o => o.condition.id === 2)
-    .map(o => o.item.id);
+    .map(o => o.evidence.id);
   const sortedGhosts = [...ghosts];
 
   sortedGhosts.sort((a, b) => {
-    const itemIdsA = a.items.map(p => p.id);
-    const itemIdsB = b.items.map(p => p.id);
-    const selectedIdsA = itemIdsA.filter(id => selectedIds.includes(id));
-    const selectedIdsB = itemIdsB.filter(id => selectedIds.includes(id));
+    const evidenceIdsA = a.evidenceList.map(p => p.id);
+    const evidenceIdsB = b.evidenceList.map(p => p.id);
+    const selectedIdsA = evidenceIdsA.filter(id => selectedIds.includes(id));
+    const selectedIdsB = evidenceIdsB.filter(id => selectedIds.includes(id));
     return selectedIdsB.length - selectedIdsA.length;
   });
 
   sortedGhosts.sort((a, b) => {
-    const itemIdsA = a.items.map(p => p.id);
-    const itemIdsB = b.items.map(p => p.id);
-    const excludedIdsA = itemIdsA.filter(p => excludedIds.includes(p));
-    const excludedIdsB = itemIdsB.filter(p => excludedIds.includes(p));
+    const evidenceIdsA = a.evidenceList.map(p => p.id);
+    const evidenceIdsB = b.evidenceList.map(p => p.id);
+    const excludedIdsA = evidenceIdsA.filter(p => excludedIds.includes(p));
+    const excludedIdsB = evidenceIdsB.filter(p => excludedIds.includes(p));
     return excludedIdsA.length - excludedIdsB.length;
   });
 

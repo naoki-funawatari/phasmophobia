@@ -1,18 +1,18 @@
 import { shallow } from "enzyme";
 import Detail from "@/features/details/Detail";
-import { ItemCondition } from "@/features/common/stores";
-import { useItemConditions } from "@/features/common/hooks";
+import { EvidenceCondition } from "@/features/common/stores";
+import { useEvidenceConditions } from "@/features/common/hooks";
 
 jest.mock("recoil");
 jest.mock("@/features/common/hooks");
 
-const mockUseConditionPerItem = useItemConditions as jest.Mock;
+const mockUseConditionPerEvidence = useEvidenceConditions as jest.Mock;
 
 describe("Mount Detail.", () => {
   beforeEach(() => {
-    mockUseConditionPerItem.mockImplementation(() => ({
-      itemConditions: mockItemConditions,
-      setConditionPerItem: () => {},
+    mockUseConditionPerEvidence.mockImplementation(() => ({
+      evidenceConditions: mockEvidenceConditions,
+      setConditionPerEvidence: () => {},
     }));
   });
 
@@ -20,7 +20,7 @@ describe("Mount Detail.", () => {
     const ghost = {
       id: 0,
       name: "スピリット",
-      items: [
+      evidenceList: [
         {
           id: 0,
           name: "EMFレベル5",
@@ -43,9 +43,9 @@ describe("Mount Detail.", () => {
   });
 });
 
-const mockItemConditions: ItemCondition[] = [
+const mockEvidenceConditions: EvidenceCondition[] = [
   {
-    item: {
+    evidence: {
       id: 0,
       name: "EMFレベル5",
     },
@@ -56,7 +56,7 @@ const mockItemConditions: ItemCondition[] = [
     },
   },
   {
-    item: {
+    evidence: {
       id: 1,
       name: "ゴーストオーブ",
     },
@@ -67,7 +67,7 @@ const mockItemConditions: ItemCondition[] = [
     },
   },
   {
-    item: {
+    evidence: {
       id: 2,
       name: "スピリットボックス",
     },

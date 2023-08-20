@@ -1,43 +1,44 @@
 import {
-  useItems,
+  useEvidenceList,
   useConditions,
-  useItemConditions,
+  useEvidenceConditions,
 } from "@/features/common/hooks";
 
 export default function Radio({
-  itemId,
+  evidenceId,
   conditionId,
 }: {
-  itemId: number;
+  evidenceId: number;
   conditionId: number;
 }) {
-  const items = useItems();
+  const evidenceList = useEvidenceList();
   const conditions = useConditions();
-  const { itemConditions, setConditionPerItem } = useItemConditions();
+  const { evidenceConditions, setConditionPerEvidence } =
+    useEvidenceConditions();
 
   const isDetermin = () => {
-    return !!itemConditions
-      .filter(o => o.item.id === itemId)
+    return !!evidenceConditions
+      .filter(o => o.evidence.id === evidenceId)
       .filter(o => o.condition.id === conditionId).length;
   };
 
   const handleEvidenceClicked = () => {
-    const newItem = items.find(o => o.id === itemId);
+    const newEvidence = evidenceList.find(o => o.id === evidenceId);
     const newCondition = conditions.find(o => o.id === conditionId);
-    const newitemConditions = itemConditions.map(o =>
-      newItem && newCondition && o.item.id === itemId
-        ? { item: newItem, condition: newCondition }
-        : o
+    const newevidenceConditions = evidenceConditions.map(o =>
+      newEvidence && newCondition && o.evidence.id === evidenceId
+        ? { evidence: newEvidence, condition: newCondition }
+        : o,
     );
 
-    setConditionPerItem(newitemConditions);
+    setConditionPerEvidence(newevidenceConditions);
   };
 
   return (
     <label>
       <input
         type="radio"
-        name={`evidence-table-data-${itemId}`}
+        name={`evidence-table-data-${evidenceId}`}
         checked={isDetermin()}
         onChange={handleEvidenceClicked}
       />

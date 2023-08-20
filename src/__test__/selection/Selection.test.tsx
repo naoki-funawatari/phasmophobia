@@ -1,28 +1,28 @@
 import { shallow } from "enzyme";
 import Selection from "@/features/selection/Selection";
-import { Item, Condition } from "@/features/common/stores";
-import { useItems, useConditions } from "@/features/common/hooks";
+import { Evidence, Condition } from "@/features/common/stores";
+import { useEvidenceList, useConditions } from "@/features/common/hooks";
 
 jest.mock("recoil");
 jest.mock("@/features/common/hooks");
 
-const mockUseItems = useItems as jest.Mock;
+const mockUseEvidenceList = useEvidenceList as jest.Mock;
 const mockUseConditions = useConditions as jest.Mock;
 
 describe("Mount Selection.", () => {
   beforeEach(() => {
-    mockUseItems.mockImplementation(() => mockItems);
+    mockUseEvidenceList.mockImplementation(() => mockEvidenceList);
     mockUseConditions.mockImplementation(() => mockConditions);
   });
 
   test("Mount Selection.", () => {
     shallow(<Selection />);
-    expect(mockUseItems).toBeCalledTimes(1);
+    expect(mockUseEvidenceList).toBeCalledTimes(1);
     expect(mockUseConditions).toBeCalledTimes(1);
   });
 });
 
-const mockItems = [
+const mockEvidenceList = [
   {
     id: 0,
     name: "EMFレベル5",
@@ -35,7 +35,7 @@ const mockItems = [
     id: 2,
     name: "スピリットボックス",
   },
-] as Item[];
+] as Evidence[];
 
 const mockConditions = [
   {

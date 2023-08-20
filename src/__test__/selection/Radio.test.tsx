@@ -1,47 +1,51 @@
 import { shallow } from "enzyme";
 import Radio from "@/features/selection/Radio";
-import { Item, Condition, ItemCondition } from "@/features/common/stores";
 import {
-  useItems,
+  Evidence,
+  Condition,
+  EvidenceCondition,
+} from "@/features/common/stores";
+import {
+  useEvidenceList,
   useConditions,
-  useItemConditions,
+  useEvidenceConditions,
 } from "@/features/common/hooks";
 
 jest.mock("recoil");
 jest.mock("@/features/common/hooks");
 
-const mockUseItems = useItems as jest.Mock;
+const mockUseEvidenceList = useEvidenceList as jest.Mock;
 const mockUseConditions = useConditions as jest.Mock;
-const mockUseConditionPerItem = useItemConditions as jest.Mock;
+const mockUseConditionPerEvidence = useEvidenceConditions as jest.Mock;
 
 describe("Mount Radio.", () => {
-  const setConditionPerItem = jest.fn();
+  const setConditionPerEvidence = jest.fn();
 
   beforeEach(() => {
-    mockUseItems.mockImplementation(() => mockItems);
+    mockUseEvidenceList.mockImplementation(() => mockEvidenceList);
     mockUseConditions.mockImplementation(() => mockConditions);
-    mockUseConditionPerItem.mockImplementation(() => ({
-      itemConditions: mockItemConditions,
-      setConditionPerItem,
+    mockUseConditionPerEvidence.mockImplementation(() => ({
+      evidenceConditions: mockEvidenceConditions,
+      setConditionPerEvidence,
     }));
   });
 
   test("Mount Radio.", () => {
-    shallow(<Radio itemId={1} conditionId={1} />);
-    expect(mockUseItems).toBeCalledTimes(1);
+    shallow(<Radio evidenceId={1} conditionId={1} />);
+    expect(mockUseEvidenceList).toBeCalledTimes(1);
     expect(mockUseConditions).toBeCalledTimes(1);
-    expect(mockUseConditionPerItem).toBeCalledTimes(1);
+    expect(mockUseConditionPerEvidence).toBeCalledTimes(1);
   });
 
   test("Change Radio.", () => {
-    const render = shallow(<Radio itemId={1} conditionId={1} />);
+    const render = shallow(<Radio evidenceId={1} conditionId={1} />);
     const element = render.find("input[type='radio']");
     element.first().simulate("change");
-    expect(setConditionPerItem).toBeCalledTimes(1);
+    expect(setConditionPerEvidence).toBeCalledTimes(1);
   });
 });
 
-const mockItems = [
+const mockEvidenceList = [
   {
     id: 0,
     name: "EMFレベル5",
@@ -54,7 +58,7 @@ const mockItems = [
     id: 2,
     name: "スピリットボックス",
   },
-] as Item[];
+] as Evidence[];
 
 const mockConditions = [
   {
@@ -74,7 +78,9 @@ const mockConditions = [
   },
 ] as Condition[];
 
-const mockItemConditions = mockItems.map<ItemCondition>(item => ({
-  item,
-  condition: mockConditions[0],
-}));
+const mockEvidenceConditions = mockEvidenceList.map<EvidenceCondition>(
+  evidence => ({
+    evidence,
+    condition: mockConditions[0],
+  }),
+);
