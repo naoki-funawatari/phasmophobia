@@ -19,39 +19,53 @@ main {
   flex-grow: 1;
 }
 
-table {
-  margin-left: auto;
-  margin-right: auto;
-  border-spacing: 1px;
-}
+.table {
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 
-th,
-td {
-  padding: 3px 5px;
-  border-bottom: 1px dotted black;
-}
+  > .row {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1px;
 
-td {
-  text-align: center;
-}
+    > div {
+      padding: 3px 7px;
+      border-bottom: 1px dotted black;
 
-.align-left {
-  text-align: left;
+      &.header {
+        font-weight: bold;
+      }
+
+      &.align-left {
+        text-align: left;
+      }
+
+      &.align-center {
+        text-align: center;
+      }
+    }
+  }
 }
 
 .evidence-name {
-  width: 85px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   white-space: pre;
+  text-align: center;
 }
 
 .determin-name {
-  width: 180px;
   white-space: pre;
+  flex: 1;
 }
 
 .condition-name,
 .ghost-name {
-  width: 130px;
+  width: 140px;
 }
 
 .count {

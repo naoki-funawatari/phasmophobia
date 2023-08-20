@@ -33,31 +33,23 @@ export default function Details() {
   return (
     <main>
       <Scrollbars height="100%" universal>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>
-                <div className="determin-name">証拠①</div>
-              </th>
-              <th>
-                <div className="determin-name">証拠②</div>
-              </th>
-              <th>
-                <div className="determin-name">証拠③</div>
-              </th>
-              <th>カウント</th>
-            </tr>
-          </thead>
-          <tbody>
+        <div className="table">
+          <div className="row">
+            <div className="header align-center ghost-name"></div>
+            <div className="header align-center determin-name">証拠①</div>
+            <div className="header align-center determin-name">証拠②</div>
+            <div className="header align-center determin-name">証拠③</div>
+            <div className="header align-center count">カウント</div>
+          </div>
+          <>
             {sortedGhosts.map((ghost, index) => (
               <Detail
                 key={`ghost-table-data-${ghost.id}-${index}`}
                 {...{ ghost, index }}
               />
             ))}
-          </tbody>
-        </table>
+          </>
+        </div>
       </Scrollbars>
     </main>
   );

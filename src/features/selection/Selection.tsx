@@ -7,32 +7,34 @@ export default function Selection() {
 
   return (
     <header>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            {evidenceList.map(evidence => (
-              <th key={`evidence-table-header-${evidence.id}`}>
-                <div className="evidence-name">{evidence.name}</div>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {conditions.map((condition, i) => (
-            <tr key={`evidence-table-data-${condition.id}-${i}`}>
-              <th className="align-left condition-name">{condition.name}</th>
-              {evidenceList.map(evidence => (
-                <td
-                  key={`evidence-table-data-${condition.id}-${i}-${evidence.id}`}
-                >
-                  <Radio evidenceId={evidence.id} conditionId={condition.id} />
-                </td>
-              ))}
-            </tr>
+      <div className="table">
+        <div className="row">
+          <div className="condition-name"></div>
+          {evidenceList.map(evidence => (
+            <div
+              className="header evidence-name"
+              key={`evidence-table-header-${evidence.id}`}
+            >
+              <div>{evidence.name}</div>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </div>
+        {conditions.map((condition, i) => (
+          <div className="row">
+            <div className="header align-left condition-name">
+              {condition.name}
+            </div>
+            {evidenceList.map(evidence => (
+              <div
+                className="evidence-name"
+                key={`evidence-table-data-${condition.id}-${i}-${evidence.id}`}
+              >
+                <Radio evidenceId={evidence.id} conditionId={condition.id} />
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
     </header>
   );
 }

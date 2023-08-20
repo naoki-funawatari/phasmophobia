@@ -19,7 +19,10 @@ export default function Detail({
 
   // istanbul ignore next
   const getEvidenceName = (evidenceId: number) => {
-    return evidenceList.find(o => o.id === evidenceId)?.name;
+    // https://step-learn.com/article/javascript/058-rn-delete.html
+    return evidenceList
+      .find(o => o.id === evidenceId)
+      ?.name.replace(/\r?\n/g, "");
   };
 
   // istanbul ignore next
@@ -41,22 +44,23 @@ export default function Detail({
   const countColor = hasExcluded() ? colors[4] : colors[determinCount];
 
   return (
-    <tr>
-      <th className="align-left ghost-name">{name}</th>
+    <div className="row">
+      <div className="header align-left ghost-name">{name}</div>
       {evidenceList.map(evidence => (
-        <td
+        <div
           key={`ghost-table-data-${id}-${index}-${evidence.id}`}
           id={`ghost-table-data-${id}-${index}-${evidence.id}`}
+          className="align-center determin-name"
           style={{
             backgroundColor: isSelected(evidence.id) ? "#ffffc1" : "white",
           }}
         >
           {getEvidenceName(evidence.id)}
-        </td>
+        </div>
       ))}
-      <td className="count" style={{ backgroundColor: countColor }}>
+      <div className="align-center count" style={{ backgroundColor: countColor }}>
         {determinCount}
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 }
